@@ -28,9 +28,19 @@ You need:
 
 # Reminders
 
- the tranining receiver will turn power off when no motion detected
-  for two minutes and no rf signal was received
+* the tranining receiver will turn power off when no motion detected
+for two minutes and no rf signal was received
+* before you can use the training device with an arduino, you
+  have to pair it (see printed manual delivered with the set):
+.1. turn on remote control by pressing "MODE" button
+.2. switch to channel you want to use with "1/2" button
+.3. press the "RESET" on the receiver
+.4. press "MODE" and then "Y" on the remote control
+.5. when you press "Y" again, it should now be paired and you can send
+    commands.
 * the example "KeepAlive" sends an blink-command after each 20 seconds,
   so the receiver will not power off when you don't want it to do...
   BUT: the battery will drain, so plug your arduino out when done with
   "training" 
+* the arduino and the remote can't wake up the receiver collar with
+  RF-commands... so be sure to wake it with an initial "shake"

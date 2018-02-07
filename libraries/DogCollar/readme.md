@@ -1,8 +1,12 @@
 
 # What is it good for
 
-destinated to be used with dog collar tranining device, there
-are cheap versions of "zogin dog training" devices out there... 
+A Library to let the Arduino be a RF-transmitter which controls
+a dog collar training device. 
+There are cheap versions of "zogin dog training" devices out there
+which the library aims at, a set contains of:
+* one remote control with buttons "1/2","light","mode","Y" and "UP"/"DOWN" on the side
+* one or two receivers with two electrodes and a collar strap to attach it on throat? of the dog
 
 # What you need
 

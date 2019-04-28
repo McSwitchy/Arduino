@@ -4,7 +4,7 @@
 // VERSION: 0.1
 // PURPOSE: replacing Remote of dog collar training device using 
 //      3-pin 433 MHz sender module (5V/GND/DATA) with an arduino 
-//     URL: <none>
+//     URL: https://github.com/flash89y/Arduino/tree/master/libraries/DogCollar
 
 #include <DogCollar.h>
 

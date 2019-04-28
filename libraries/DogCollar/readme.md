@@ -16,7 +16,14 @@ You need:
 * Arduino (i prefer "Pro Mini" or "Pro Micro")
 * 433Mhz module (like this: https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Delectronics&field-keywords=433mhz+transmitter)
   (the 3-pin version is the sender)
-  
+
+Possibly also this, if you got a device with another uniqueKey:
+* RFControl library
+* 433Mhz receiver module (like this, 4-pin module shipped in combination of transmitter: https://www.amazon.com/s?k=433Mhz+receiver)
+* the INO-script to get the code -> examples/GetUniqueKey.ino
+* original remote by hand to press any button (in each RF command is the key included)
+  (you may have to hold a button for a few seconds to show up uniqueKey in Terminal)
+
 # Instructions to use the library
 
 1. place this folder into you arduino library path

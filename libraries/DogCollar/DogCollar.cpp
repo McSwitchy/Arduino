@@ -3,7 +3,7 @@
 //  AUTHOR: Flash89y
 // VERSION: 0.1
 // PURPOSE: replacing Remote of dog collar training device
-//     URL: <none>
+//     URL: https://github.com/flash89y/Arduino/tree/master/libraries/DogCollar
 //REQUIRES: RFControl library (https://github.com/pimatic/RFControl)
 //
 // HISTORY:

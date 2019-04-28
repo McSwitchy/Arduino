@@ -48,8 +48,6 @@ void DogCollar::sendCollar(CollarChannel ch, CollarMode mode, uint8_t str)
     setStrength(str);
     magiccode[lenMagicCode-1]='\0';
 
-    Serial.println(magiccode);
-
     if(ch == CollarChannel::BOTH)
     {
         setChannel(CollarChannel::CH1);

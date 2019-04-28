@@ -13,12 +13,12 @@
 #include "DogCollar.h"
 #include <RFControl.h>
 
-DogCollar::DogCollar(int transmitPin, int repeatedSending) : millisDifferenceAllowed(20000)
+DogCollar::DogCollar(int transmitPin, String uniqueKey, int repeatedSending) : millisDifferenceAllowed(60000), key(uniqueKey)
 {
     lastMillis = 0;
     repeatNumber = repeatedSending;
     pin = transmitPin;
-    lenMagicCode = 84;
+    lenMagicCode = 85;
     magiccode = new char[lenMagicCode];
     
     setChannel(CollarChannel::CH1);
@@ -33,6 +33,8 @@ DogCollar::DogCollar(int transmitPin, int repeatedSending) : millisDifferenceAll
     beacons[5] = 0;
     beacons[6] = 0;
     beacons[7] = 0;
+
+    fillSequences();
 }
 
 DogCollar::~DogCollar()
@@ -42,13 +44,24 @@ DogCollar::~DogCollar()
 
 void DogCollar::sendCollar(CollarChannel ch, CollarMode mode, uint8_t str)
 {
-    fillSequences();
-    setChannel(ch);
     setMode(mode);
     setStrength(str);
     magiccode[lenMagicCode-1]='\0';
-    
-    RFControl::sendByCompressedTimings(pin, beacons, magiccode, repeatNumber);
+
+    Serial.println(magiccode);
+
+    if(ch == CollarChannel::BOTH)
+    {
+        setChannel(CollarChannel::CH1);
+        RFControl::sendByCompressedTimings(pin, beacons, magiccode, repeatNumber);
+        delay(20);
+        setChannel(CollarChannel::CH2);
+        RFControl::sendByCompressedTimings(pin, beacons, magiccode, repeatNumber);
+    }   
+    else
+    {
+        RFControl::sendByCompressedTimings(pin, beacons, magiccode, repeatNumber);
+    }
 }
 
 void DogCollar::sendLastCmd()
@@ -263,10 +276,10 @@ void DogCollar::setStrength(uint8_t str)
 
 void DogCollar::fillSequences(){
 
-    char sequence1[] = {"0112"};
-    char sequence2[] = {"2112122112122112211212122121121221"};
+    String sequence1 = String(F("0112"));
+    String sequence2 = key;
+    String sequence3 = String(F("1212122123V"));
     const int seq2Offset = 18;
-    char sequence3[] = {"1212122123V"};
     const int seq3Offset = 74;
 
     // write in default timings
@@ -291,9 +304,8 @@ bool DogCollar::keepAlive()
     {
         // let the led blink on both channels to prohibit deep sleep
         sendCollar(CollarChannel::CH1, CollarMode::Blink, 100);
-        delay(500);
+        delay(50);
         sendCollar(CollarChannel::CH2, CollarMode::Blink, 100);
-        delay(100);
         lastMillis = currentMillis;
         return true;
     }

@@ -12,38 +12,40 @@
 #include <DogCollar.h>
 
 #define PIN_TRANSMITTER 7
-DogCollar dg(PIN_TRANSMITTER);
+// find out this key with RFControl library...
+String uniqueKeyOfDevice = "2112122112122112211212122121121221";
+DogCollar dg(PIN_TRANSMITTER,uniqueKeyOfDevice);
 
 void setup()
 {
-	Serial.begin(115200);
-	Serial.println("DogCollar library demo - Simple Test");
+    Serial.begin(115200);
+    Serial.println("DogCollar library demo - Simple Test");
 }
 
 void loop()
 {
-	// trying different modes of Channel 1-coded device in a loop...
-	Serial.println("CollarChannel::CH1, CollarMode::Beep, Strength:100");
-	delay(1000);
-	dg.sendCollar(CollarChannel::CH1, CollarMode::Beep, 100);
+    // trying different modes of Channel 1-coded device in a loop...
+    Serial.println("CollarChannel::CH1, CollarMode::Beep, Strength:100");
+    delay(1000);
+    dg.sendCollar(CollarChannel::CH1, CollarMode::Beep, 100);
 
-	delay(5000);
+    delay(5000);
 
-	Serial.println("CollarChannel::CH1, CollarMode::Vibe, Strength:100");
-	delay(1000);
-	dg.sendCollar(CollarChannel::CH1, CollarMode::Vibe, 100);
+    Serial.println("CollarChannel::CH1, CollarMode::Vibe, Strength:100");
+    delay(1000);
+    dg.sendCollar(CollarChannel::CH1, CollarMode::Vibe, 100);
 
-	delay(5000);
+    delay(5000);
 
-	Serial.println("CollarChannel::CH1, CollarMode::Shock, Strength:20");
-	delay(1000);
-	dg.sendCollar(CollarChannel::CH1, CollarMode::Shock, 20);
+    Serial.println("CollarChannel::CH1, CollarMode::Shock, Strength:20");
+    delay(1000);
+    dg.sendCollar(CollarChannel::CH1, CollarMode::Shock, 20);
 
-	delay(5000);
+    delay(5000);
 
-	Serial.println("CollarChannel::CH1, CollarMode::Blink, Strength:100");
-	delay(1000);
-	dg.sendCollar(CollarChannel::CH1, CollarMode::Blink, 100);
+    Serial.println("CollarChannel::CH1, CollarMode::Blink, Strength:100");
+    delay(1000);
+    dg.sendCollar(CollarChannel::CH1, CollarMode::Blink, 100);
 
-	delay(5000);
+    delay(5000);
 }

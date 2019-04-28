@@ -41,9 +41,6 @@ public:
     DogCollar(int transmitPin, String uniqueKey, int repeatedSending = 3);
     ~DogCollar();
     void sendCollar(CollarChannel ch, CollarMode mode, uint8_t str);
-    void setMode(CollarMode mode);
-    void setChannel(CollarChannel ch);
-    void setStrength(uint8_t str);
     bool keepAlive();
 private:
 

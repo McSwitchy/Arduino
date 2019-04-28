@@ -69,8 +69,8 @@ void loop() {
     }
 
     // get final outputs
-    //Serial.println("timings_size = " + String(timings_size));
-    //Serial.println("timingsCompressed = " + String(timingsCompressed));
+    Serial.println("timings_size = " + String(timings_size));
+    Serial.println("timingsCompressed = " + String(timingsCompressed));
     if(String(timingsCompressed).length() > keyOffset+keyLen)
     {
       Serial.println("uniqueKey = " + String(timingsCompressed).substring(keyOffset,keyOffset+keyLen));

@@ -27,10 +27,14 @@ Possibly also this, if you got a device with another uniqueKey:
 # Instructions to use the library
 
 1. place this folder into you arduino library path
-   or in the root of your arduino project (where the *.ino lies)
+   OR in the root of your arduino project (where the *.ino lies)
+   OR Arduino IDE -> Sketch > Include Library > Add .ZIP Library
 2. get the RfControl library from https://github.com/pimatic/RFControl
    and repeat the procedure with this library too
-3. connect arduino with some digital pin to DATA of transmitter,
+3. find out YOUR uniqueKey with sketch examples/GetUniqueKey.ino
+   and change it in example file DogCollar-*.ino to match yours
+   (you need the 433MHz receiving module here)
+4. connect arduino with some digital pin to DATA of transmitter,
    to run an unchanged example it has to be pin 7
 
 # Reminders
@@ -45,7 +49,7 @@ for two minutes and no rf signal was received
 .4. press "MODE" and then "Y" on the remote control
 .5. when you press "Y" again, it should now be paired and you can send
     commands.
-* the example "KeepAlive" sends an blink-command after each 20 seconds,
+* the example "KeepAlive" sends an blink-command after each 60 seconds,
   so the receiver will not power off when you don't want it to do...
   BUT: the battery will drain, so plug your arduino out when done with
   "training" 
